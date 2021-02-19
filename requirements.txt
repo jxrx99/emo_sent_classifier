@@ -1,0 +1,10 @@
+malaya
+tensorflow=1.15.0
+tensorflow_text==1.15.0rc0
+tf-sentencepiece==0.1.86
+flask
+pandas
+fastapi==0.63.0
+uvicorn
+python-multipart
+aiofiles

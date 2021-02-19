@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Penganalisis Emosi dan Sentimen</title>
+  <meta name="description" content="Calculate score of malay text">
+  <meta name="author" content="Jxrx99">
+
+  <link rel="stylesheet" href="static/style.css">
+
+</head>
+
+<body>
+  <h1>Penganalisis Emosi dan Sentimen</h1>
+  <h3>Memberikan analisis untuk teks anda</h3>
+  <form action="/emotion" method="post">
+  <textarea id="text" name="text" rows="4" cols="50" placeholder="Sila masukkan teks">{% if emotion_result %}{{ text }}{% endif%}</textarea>
+  <br>
+  <input type="submit" value='Analisis'>
+</form>
+  
+  {% if emotion_result %}
+  <h2>Teks: {{ text }}</h2>
+  <h2>Emosi: {{ emotion_result }}</h2>
+  <h2>Sentimen: {{ sentiment_result }}</h2>
+  {% else %}
+  <h2>  </h2>
+ {% endif %}
+ 
+</body>
+</html>

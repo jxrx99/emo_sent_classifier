@@ -4,8 +4,8 @@ import malaya
 from fastapi.staticfiles import StaticFiles
 
 
-emotion_model = malaya.emotion.transformer(model = 'tiny-bert')
-sentiment_model = malaya.sentiment.transformer(model = 'tiny-bert')
+emotion_model = malaya.emotion.transformer(model = 'tiny-albert')
+sentiment_model = malaya.sentiment.transformer(model = 'tiny-albert')
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")

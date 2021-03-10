@@ -4,8 +4,8 @@ import malaya
 from fastapi.staticfiles import StaticFiles
 
 
-emotion_model = malaya.emotion.transformer(model = 'tiny-albert')
-sentiment_model = malaya.sentiment.transformer(model = 'tiny-albert')
+emotion_model = malaya.emotion.transformer(model = 'tiny-bert', quantized = True)
+sentiment_model = malaya.sentiment.transformer(model = 'tiny-bert', quantized = True)
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -25,4 +25,8 @@ def form_get(request: Request):
 def form_post(request: Request, text: str = Form(...)):
     emotion_result = emotion_model.predict([text])
     sentiment_result = sentiment_model.predict([text])
-    return templates.TemplateResponse('index.html', context={'request': request, 'emotion_result': emotion_result, 'sentiment_result': sentiment_result, 'text': text})
+    return templates.TemplateResponse('index.html', context={
+        'request': request, 
+        'emotion_result': emotion_result, 
+        'sentiment_result': sentiment_result, 
+        'text': text})
